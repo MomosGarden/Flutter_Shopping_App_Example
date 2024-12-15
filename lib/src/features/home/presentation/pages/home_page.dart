@@ -36,8 +36,7 @@ class _HomePageState extends State<HomePage> {
           );
         },
         child: Builder(builder: (context) {
-          final cartProductsLenght = context
-              .select((CartBloc cartBloc) => cartBloc.state.products.length);
+          final cartProductsLenght = context.select((CartBloc cartBloc) => cartBloc.state.products.length);
 
           return Badge.count(
             count: cartProductsLenght,
@@ -57,25 +56,18 @@ class _HomePageState extends State<HomePage> {
       body: BlocBuilder<ProductBloc, ProductState>(
         builder: (context, state) {
           return switch (state.status) {
-            ProductListStatus.initial =>
-              const Center(child: CircularProgressIndicator()),
+            ProductListStatus.initial => const Center(child: CircularProgressIndicator()),
             ProductListStatus.failure => const Text('An error occurred'),
-            ProductListStatus.loading ||
-            ProductListStatus.success =>
-              ListView.builder(
+            ProductListStatus.loading || ProductListStatus.success => ListView.builder(
                 controller: _scrollController,
-                itemCount: state.status == ProductListStatus.success
-                    ? state.products.length
-                    : state.products.length + 1,
+                itemCount: state.status == ProductListStatus.success ? state.products.length : state.products.length + 1,
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.symmetric(
                       vertical: 10.0,
                       horizontal: 16.0,
                     ),
-                    child: index < state.products.length
-                        ? ProductListItem(product: state.products[index])
-                        : const Center(child: CircularProgressIndicator()),
+                    child: index < state.products.length ? ProductListItem(product: state.products[index]) : const Center(child: CircularProgressIndicator()),
                   );
                 },
               ),

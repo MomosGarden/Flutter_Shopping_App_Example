@@ -14,8 +14,7 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
     on<ProductListFetchRequested>(_onProductListFetchRequested);
     on<ProductListFetchMoreRequested>(
       _onProductListFetchMoreRequested,
-      transformer: (events, mapper) =>
-          droppable<ProductListFetchMoreRequested>().call(
+      transformer: (events, mapper) => droppable<ProductListFetchMoreRequested>().call(
         events.throttleTime(const Duration(milliseconds: 1000)).flatMap(mapper),
         mapper,
       ),

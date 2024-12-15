@@ -12,10 +12,8 @@ void initializeDependencies() async {
   sl.registerSingleton<DummyClient>(DummyClient());
 
   // Services
-  sl.registerSingleton<ProductService>(
-      ProductService(dummyClient: sl.get<DummyClient>()));
-  sl.registerSingleton<CartService>(
-      CartService(cartProductBox: Hive.box<CartProduct>('cartProductBox')));
+  sl.registerSingleton<ProductService>(ProductService(dummyClient: sl.get<DummyClient>()));
+  sl.registerSingleton<CartService>(CartService(cartProductBox: Hive.box<CartProduct>('cartProductBox')));
 
   // Repositories
   sl.registerSingleton<HomeRepository>(HomeRepository(

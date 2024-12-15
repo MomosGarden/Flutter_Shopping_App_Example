@@ -9,11 +9,9 @@ class ProductListData extends Equatable {
 
   factory ProductListData.fromJson(Map<String, dynamic> json) {
     return ProductListData(
-        total: json['total'] ?? 0,
-        products: (json['products'] as List)
-            .cast<Map<String, dynamic>>()
-            .map(Product.fromJson)
-            .toList());
+      total: json['total'] ?? 0,
+      products: (json['products'] as List).cast<Map<String, dynamic>>().map(Product.fromJson).toList(),
+    );
   }
 
   @override

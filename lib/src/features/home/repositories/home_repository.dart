@@ -9,8 +9,7 @@ class HomeRepository {
   final ProductService _productService;
   final CartService _cartService;
 
-  final _cartProductSubject =
-      BehaviorSubject<List<CartProduct>>.seeded(const []);
+  final _cartProductSubject = BehaviorSubject<List<CartProduct>>.seeded(const []);
 
   HomeRepository({
     required ProductService productService,

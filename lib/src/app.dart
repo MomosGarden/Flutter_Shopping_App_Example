@@ -16,14 +16,10 @@ class App extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) =>
-              ProductBloc(homeRepository: sl.get<HomeRepository>())
-                ..add(ProductListFetchRequested()),
+          create: (context) => ProductBloc(homeRepository: sl.get<HomeRepository>())..add(ProductListFetchRequested()),
         ),
         BlocProvider(
-          create: (context) =>
-              CartBloc(homeRepository: sl.get<HomeRepository>())
-                ..add(CartProductsSubscriptionRequested()),
+          create: (context) => CartBloc(homeRepository: sl.get<HomeRepository>())..add(CartProductsSubscriptionRequested()),
         ),
       ],
       child: MaterialApp(

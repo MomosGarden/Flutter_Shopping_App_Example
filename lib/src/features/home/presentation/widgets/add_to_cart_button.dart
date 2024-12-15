@@ -14,10 +14,8 @@ class AddToCartButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final cartProducts =
-        context.select((CartBloc cartBloc) => cartBloc.state.products);
-    final isProductInCart =
-        cartProducts.any((element) => element.id == product.id);
+    final cartProducts = context.select((CartBloc cartBloc) => cartBloc.state.products);
+    final isProductInCart = cartProducts.any((element) => element.id == product.id);
 
     return CircleAvatar(
       backgroundColor: isProductInCart ? Colors.green : Colors.grey,
@@ -28,9 +26,7 @@ class AddToCartButton extends StatelessWidget {
         color: Colors.white,
         onPressed: () {
           if (isProductInCart) {
-            context
-                .read<CartBloc>()
-                .add(RemoveCartProductRequested(product.id));
+            context.read<CartBloc>().add(RemoveCartProductRequested(product.id));
           } else {
             context.read<CartBloc>().add(AddCartProductRequested(product));
           }

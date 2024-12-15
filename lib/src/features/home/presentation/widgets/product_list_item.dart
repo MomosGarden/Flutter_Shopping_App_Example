@@ -22,12 +22,12 @@ class ProductListItem extends StatelessWidget {
         borderRadius: BorderRadius.all(Radius.circular(20)),
       ),
       child: Row(
-        spacing: 5,
         children: [
           CachedNetworkImage(
             imageUrl: product.thumbnail,
             errorWidget: (_, __, ___) => const Icon(Icons.error),
           ),
+          SizedBox(width: 3),
           Expanded(
             child: Text(
               product.title,

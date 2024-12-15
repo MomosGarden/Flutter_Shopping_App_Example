@@ -37,26 +37,18 @@ class CartPage extends StatelessWidget {
             ),
           ),
           body: switch (state.status) {
-            CartStatus.empty => const Center(
-                child: Text(
-                    'No products in cart. Please add what you want to buy.')),
-            CartStatus.checkOutDone ||
-            CartStatus.initial =>
-              const Center(child: CircularProgressIndicator()),
-            CartStatus.failure =>
-              const Center(child: Text('Something went wrong.')),
+            CartStatus.empty => const Center(child: Text('No products in cart. Please add what you want to buy.')),
+            CartStatus.checkOutDone || CartStatus.initial => const Center(child: CircularProgressIndicator()),
+            CartStatus.failure => const Center(child: Text('Something went wrong.')),
             CartStatus.hasProducts => ListView.builder(
                 itemCount: state.products.length + 1,
                 itemBuilder: (context, index) => Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: index >= state.products.length
-                      ? SizedBox(height: 100)
-                      : CartListItem(product: state.products[index]),
+                  child: index >= state.products.length ? SizedBox(height: 100) : CartListItem(product: state.products[index]),
                 ),
               ),
           },
-          floatingActionButtonLocation:
-              FloatingActionButtonLocation.centerFloat,
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
           floatingActionButton: Padding(
             padding: const EdgeInsets.all(16.0),
             child: CheckoutButton(total: state.total),

@@ -69,9 +69,7 @@ class CartListItem extends StatelessWidget {
             margin: EdgeInsets.only(right: 5),
             child: IconButton(
               onPressed: () {
-                context
-                    .read<CartBloc>()
-                    .add(RemoveCartProductRequested(product.id));
+                context.read<CartBloc>().add(RemoveCartProductRequested(product.id));
               },
               icon: Icon(
                 Icons.cancel_outlined,

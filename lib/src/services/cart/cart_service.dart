@@ -4,8 +4,7 @@ import 'package:shopping_app_example/src/services/cart/box/cart_product_box.dart
 class CartService {
   final Box<CartProduct> _cartProductBox;
 
-  CartService({required Box<CartProduct> cartProductBox})
-      : _cartProductBox = cartProductBox;
+  CartService({required Box<CartProduct> cartProductBox}) : _cartProductBox = cartProductBox;
 
   List<CartProduct> loadCartProducts() {
     return _cartProductBox.values.toList();
