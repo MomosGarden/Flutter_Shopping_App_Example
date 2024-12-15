@@ -19,7 +19,7 @@ class CartListItem extends StatelessWidget {
     return Stack(
       children: [
         Container(
-          height: 190,
+          height: 150,
           padding: const EdgeInsets.all(10.0),
           margin: const EdgeInsets.symmetric(horizontal: 10.0),
           decoration: const BoxDecoration(
@@ -29,9 +29,12 @@ class CartListItem extends StatelessWidget {
           child: Row(
             children: [
               CachedNetworkImage(
+                width: 130,
+                fit: BoxFit.fitWidth,
                 imageUrl: product.thumbnail,
                 errorWidget: (_, __, ___) => const Icon(Icons.error),
               ),
+              SizedBox(width: 3),
               Expanded(
                 child: Text(
                   product.title,
