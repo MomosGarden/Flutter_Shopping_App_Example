@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shopping_app_example/src/features/home/bloc/cart/cart_bloc.dart';
 import 'package:shopping_app_example/src/features/home/bloc/product/product_bloc.dart';
 import 'package:shopping_app_example/src/features/home/bloc/product/product_event.dart';
 import 'package:shopping_app_example/src/features/home/bloc/product/product_state.dart';
@@ -34,10 +35,19 @@ class _HomePageState extends State<HomePage> {
             ),
           );
         },
-        child: const Icon(
-          Icons.shopping_cart_checkout_outlined,
-          size: 30,
-        ),
+        child: Builder(builder: (context) {
+          final cartProductsLenght = context
+              .select((CartBloc cartBloc) => cartBloc.state.products.length);
+
+          return Badge.count(
+            count: cartProductsLenght,
+            backgroundColor: Colors.green,
+            child: const Icon(
+              Icons.shopping_cart_checkout_outlined,
+              size: 30,
+            ),
+          );
+        }),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       appBar: AppBar(

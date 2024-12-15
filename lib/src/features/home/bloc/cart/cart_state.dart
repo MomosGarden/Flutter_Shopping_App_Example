@@ -20,8 +20,11 @@ class CartState extends Equatable {
     this.total = 0.0,
   });
 
-  CartState copyWith(
-      {List<CartProduct>? products, CartStatus? status, double? total}) {
+  CartState copyWith({
+    List<CartProduct>? products,
+    CartStatus? status,
+    double? total,
+  }) {
     return CartState(
       products: products ?? this.products,
       status: status ?? this.status,

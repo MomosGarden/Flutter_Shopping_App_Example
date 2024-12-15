@@ -28,7 +28,7 @@ class CartBloc extends Bloc<CartEvent, CartState> {
     on<CheckOutRequested>(
       _onCheckOutRequested,
       transformer: (events, mapper) => droppable<CheckOutRequested>().call(
-        events.throttleTime(const Duration(milliseconds: 200)).flatMap(mapper),
+        events.throttleTime(const Duration(milliseconds: 300)).flatMap(mapper),
         mapper,
       ),
     );
