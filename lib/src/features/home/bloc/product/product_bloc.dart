@@ -61,8 +61,6 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       );
 
       final page = (state.products.length / 20).floor();
-      print('--------------------------------');
-      print(page.toString());
 
       final productsData = await _homeRepository.fetchProducts(skip: page * 20);
 
